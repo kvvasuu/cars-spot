@@ -27,7 +27,7 @@
         >
       </div>
       <div class="sm:flex justify-end w-auto sm:w-1/3">
-        <a href="#footer" class="hidden sm:flex"
+        <a href="https://kwasu.pl/" target="_blank" class="hidden sm:flex"
           ><BasicButton class="text-white bg-myblue"
             >Zadzwoń do nas</BasicButton
           ></a
@@ -38,11 +38,11 @@
       </div>
     </div>
   </header>
-  <main class="flex flex-col items-center w-full">
+  <main class="flex-col items-center w-full">
     <section
       class="relative flex items-start justify-start w-full h-[824px] px-8 lg:px-28 py-14 lg:py-28"
     >
-      <div class="flex flex-col items-start">
+      <div class="flex-col items-start z-20">
         <div class="content">
           <h1 class="font-bebas font-primary text-7xl">
             Sprzedajemy samochody<br />
@@ -54,8 +54,12 @@
           </p>
         </div>
         <div class="buttons flex gap-8">
-          <BasicButton class="text-white bg-myblue">Zobacz zdjęcia</BasicButton>
-          <a href="#footer"
+          <a href="#gallery">
+            <BasicButton class="text-white bg-myblue"
+              >Zobacz zdjęcia</BasicButton
+            >
+          </a>
+          <a href="https://kwasu.pl/" target="_blank"
             ><BasicButton
               class="bg-white text-myblue font-bold hover:text-white hover:bg-myblue"
               >Zadzwoń do nas</BasicButton
@@ -70,21 +74,77 @@
         draggable="false"
       />
     </section>
-    <section></section>
-    <section id="gallery"></section>
     <section
-      class="bg-primary flex flex-col items-center w-full h-40"
-    ></section>
+      id="gallery"
+      class="relative flex-col items-end justify-center w-full h-auto sm:h-[208px] px-8 lg:px-20 mb-8 sm:mb-0"
+    >
+      <div class="relative flex-col">
+        <p class="font-roboto text-[21.5px] text-myblue">Prezentacja firmy</p>
+        <p class="font-bebas text-[24px] sm:text-[40px] text-primarydark">
+          Zobacz naszą galerię zdjęć
+        </p>
+      </div>
+      <div class="relative flex justify-start w-full mt-4 sm:mt8">
+        <span
+          class="mr-2 sm:mr-8 font-robotoflex text-xs sm:text-[15px] text-black cursor-pointer select-none transition-all"
+          :class="{ active: cars }"
+          @click="changeGalleryPage('cars')"
+          >&nbsp;Samochody osobowe&nbsp;</span
+        ><span
+          class="font-robotoflex text-xs sm:text-[15px] text-[15px] text-black cursor-pointer select-none transition-all"
+          :class="{ active: !cars }"
+          @click="changeGalleryPage('trucks')"
+          >&nbsp;Samochody dostawcze&nbsp;</span
+        >
+      </div>
+    </section>
+    <section></section>
+    <section
+      class="bg-primary flex-col items-center w-full py-20 px-8 lg:px-28"
+    >
+      <div class="flex flex-col sm:flex-row gap-12">
+        <div class="w-full sm:w-1/2"><SeoElement></SeoElement></div>
+        <div class="w-full sm:w-1/2"><SeoElement></SeoElement></div>
+      </div>
+    </section>
   </main>
   <footer
     id="footer"
     class="bg-primary flex justify-between items-center py-6 w-full border-t border-solid border-white px-8 lg:px-28"
   >
     <span class="text-white font-roboto font-bold">Cars Spot</span>
-    <a href="" target="_blank" class="text-white underline font-roboto"
+    <a
+      href="https://www.linkedin.com/in/%C5%82ukasz-kwas-aa985a232/"
+      target="_blank"
+      class="text-white underline font-roboto"
       >Polityka prywatności</a
     >
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import SeoElement from "./components/SeoElement.vue";
+import { ref } from "vue";
+
+const cars = ref(true); //true - "Samochody osobowe", false - "Samochody dostawcze"
+
+const changeGalleryPage = (type) => {
+  switch (type) {
+    case "cars":
+      if (!cars.value) cars.value = !cars.value;
+      break;
+    case "trucks":
+      if (cars.value) cars.value = !cars.value;
+      break;
+  }
+};
+</script>
+
+<style scoped>
+.active {
+  color: #0147ff;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  font-weight: 600;
+}
+</style>

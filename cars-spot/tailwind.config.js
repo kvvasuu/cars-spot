@@ -10,6 +10,7 @@ export default {
       },
       colors: {
         primary: "#282828",
+        primarydark: "#1D1D1B",
         myblue: "#0147FF",
         white: "#F7F7F7",
       },
