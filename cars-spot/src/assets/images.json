@@ -1,0 +1,66 @@
+{
+  "cars": [
+    {
+      "name": "Alfa Romeo",
+      "description": "Bardzo szybki czerwony samochód.",
+      "img": "alfa.png"
+    },
+    {
+      "name": "Alfa Romeo",
+      "description": "Ekskluzywny czarny samochód.",
+      "img": "maserati.png"
+    },
+    {
+      "name": "Audi",
+      "description": "To jest chyba audi.",
+      "img": "audi.png"
+    },
+    {
+      "name": "Alfa Romeo",
+      "description": "Bardzo szybki czerwony samochód.",
+      "img": "alfa.png"
+    },
+    {
+      "name": "Alfa Romeo",
+      "description": "Ekskluzywny czarny samochód.",
+      "img": "maserati.png"
+    },
+    {
+      "name": "Audi",
+      "description": "To jest chyba audi.",
+      "img": "audi.png"
+    }
+  ],
+  "trucks": [
+    {
+      "name": "Volkswagen",
+      "description": "Transporter w stylu campera.",
+      "img": "california.png"
+    },
+    {
+      "name": "Mercedes",
+      "description": "Duży i szybki dostawczak.",
+      "img": "mercedes.png"
+    },
+    {
+      "name": "Ford",
+      "description": "Idealny dla kuriera.",
+      "img": "ford.png"
+    },
+    {
+      "name": "Volkswagen",
+      "description": "Transporter w stylu campera.",
+      "img": "california.png"
+    },
+    {
+      "name": "Mercedes",
+      "description": "Duży i szybki dostawczak.",
+      "img": "mercedes.png"
+    },
+    {
+      "name": "Ford",
+      "description": "Idealny dla kuriera.",
+      "img": "ford.png"
+    }
+  ]
+}

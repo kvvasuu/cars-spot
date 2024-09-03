@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col items-start justify-between w-full text-white">
+  <div class="flex flex-col items-start justify-between w-full text-white">
     <p class="font-bebas text-[25px]">
       Id nostrud enim esse consectetur in eu mollit fugiat aute. Velit nulla
       commodo.
@@ -30,7 +30,7 @@
           automobili potestatem sentiunt viatores, qui sine mora in dies
           velociores, longioresque itinera faciunt.
         </p>
-        <p class="mt-4" ref="scrollTo">
+        <p class="mt-4">
           Automobilis non est tantum machina ferro et motore composita, sed
           etiam symbolum temporis moderni, quo homines plus quam unquam antea ad
           novas metas ducuntur. In eius silentioso murmure, resonant anhelitus
@@ -61,7 +61,7 @@ const expand = () => {
 
 .expand-enter-active,
 .expand-leave-active {
-  height: 17.5rem;
+  height: 16.125rem;
   padding: 1rem;
   overflow: hidden;
   transition: all 0.5s ease;

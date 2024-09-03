@@ -38,11 +38,11 @@
       </div>
     </div>
   </header>
-  <main class="flex-col items-center w-full">
+  <main class="flex flex-col items-center w-full">
     <section
       class="relative flex items-start justify-start w-full h-[824px] px-8 lg:px-28 py-14 lg:py-28"
     >
-      <div class="flex-col items-start z-20">
+      <div class="flex flex-col items-start z-20">
         <div class="content">
           <h1 class="font-bebas font-primary text-7xl">
             Sprzedajemy samochody<br />
@@ -70,15 +70,15 @@
       <img
         src="./assets/cars.png"
         alt=""
-        class="absolute -right-32 sm:-right-24 bottom-40 sm:bottom-24 select-none"
+        class="absolute -right-32 sm:-right-24 lg:-right-0 bottom-40 sm:bottom-24 select-none"
         draggable="false"
       />
     </section>
     <section
       id="gallery"
-      class="relative flex-col items-end justify-center w-full h-auto sm:h-[208px] px-8 lg:px-20 mb-8 sm:mb-0"
+      class="relative flex flex-col items-start justify-end w-full h-[208px] px-8 lg:px-20"
     >
-      <div class="relative flex-col">
+      <div class="relative flex flex-col">
         <p class="font-roboto text-[21.5px] text-myblue">Prezentacja firmy</p>
         <p class="font-bebas text-[24px] sm:text-[40px] text-primarydark">
           Zobacz naszą galerię zdjęć
@@ -98,9 +98,13 @@
         >
       </div>
     </section>
-    <section></section>
+    <section class="w-full h-auto">
+      <Transition name="slide" mode="out-in">
+        <ImagesGallery :carsType="carsType" :key="carsType"></ImagesGallery>
+      </Transition>
+    </section>
     <section
-      class="bg-primary flex-col items-center w-full py-20 px-8 lg:px-28"
+      class="bg-primary flex flex-col items-center w-full py-20 px-8 lg:px-28"
     >
       <div class="flex flex-col sm:flex-row gap-12">
         <div class="w-full sm:w-1/2"><SeoElement></SeoElement></div>
@@ -123,18 +127,27 @@
 </template>
 
 <script setup>
+import ImagesGallery from "./components/ImagesGallery.vue";
 import SeoElement from "./components/SeoElement.vue";
 import { ref } from "vue";
 
 const cars = ref(true); //true - "Samochody osobowe", false - "Samochody dostawcze"
 
+const carsType = ref("cars");
+
 const changeGalleryPage = (type) => {
   switch (type) {
     case "cars":
-      if (!cars.value) cars.value = !cars.value;
+      if (!cars.value) {
+        cars.value = !cars.value;
+        carsType.value = "cars";
+      }
       break;
     case "trucks":
-      if (cars.value) cars.value = !cars.value;
+      if (cars.value) {
+        cars.value = !cars.value;
+        carsType.value = "trucks";
+      }
       break;
   }
 };
@@ -146,5 +159,20 @@ const changeGalleryPage = (type) => {
   text-decoration: underline;
   text-underline-offset: 6px;
   font-weight: 600;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-100rem);
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(100rem);
 }
 </style>
