@@ -3,44 +3,44 @@
     {
       "name": "Alfa Romeo",
       "description": "Bardzo szybki czerwony samochód.",
-      "img": "alfa.png"
+      "img": "alfa"
     },
     {
       "name": "Maserati",
       "description": "Ekskluzywny czarny samochód.",
-      "img": "maserati.png"
+      "img": "maserati"
     },
     {
       "name": "Audi",
       "description": "To jest chyba audi.",
-      "img": "audi.png"
+      "img": "audi"
     },
     {
       "name": "Volvo",
       "description": "Samochód osobowy klasy średniej.",
-      "img": "volvo.png"
+      "img": "volvo"
     },
     {
       "name": "Fiat",
       "description": "Mały, ale wariat.",
-      "img": "fiat.png"
+      "img": "fiat"
     }
   ],
   "trucks": [
     {
       "name": "Volkswagen",
       "description": "Transporter w stylu campera.",
-      "img": "california.png"
+      "img": "california"
     },
     {
       "name": "Mercedes",
       "description": "Duży i szybki dostawczak.",
-      "img": "mercedes.png"
+      "img": "mercedes"
     },
     {
       "name": "Ford",
       "description": "Idealny dla kuriera.",
-      "img": "ford.png"
+      "img": "ford"
     }
   ]
 }

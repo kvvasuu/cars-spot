@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Roboto Condensed";
+    src: url(./assets/fonts/RobotoCondensed.ttf) format("ttf");
+  }
+  @font-face {
+    font-family: "Roboto Flex";
+    src: url(./assets/fonts/RobotoFlex.ttf) format("ttf");
+  }
+
+  @font-face {
+    font-family: "Bebas Neue";
+    src: url(./assets/fonts/BebasNeue.ttf) format("ttf");
+  }
+}
+
 :root {
   color: #282828;
   background-color: #f7f7f7;

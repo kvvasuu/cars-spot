@@ -12,9 +12,14 @@
     <button
       class="flex font-roboto text-[14px] border-b-2 border-b-white bg-transparent"
       @click="expand"
+      aria-label="Rozwiń"
     >
       Rozwiń
-      <img src="../assets/arrow-down.svg" class="ml-2 mb-2 mt-1" />
+      <img
+        src="../assets/arrow-down.svg"
+        class="ml-2 mb-2 mt-1"
+        alt="Arrow down"
+      />
     </button>
     <Transition name="expand">
       <div

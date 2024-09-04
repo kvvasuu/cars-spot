@@ -32,7 +32,8 @@ import { ref, computed } from "vue";
 const props = defineProps(["image"]);
 
 const getImageSrc = computed(() => {
-  return new URL(`../assets/gallery/${props.image.img}`, import.meta.url).href;
+  return new URL(`../assets/gallery/${props.image.img}.webp`, import.meta.url)
+    .href;
 });
 
 const isOverlayVisible = ref(false);

@@ -28,7 +28,7 @@
       </div>
       <div class="sm:flex justify-end w-auto sm:w-1/3 relative">
         <a href="https://kwasu.pl/" target="_blank" class="hidden sm:flex"
-          ><BasicButton class="text-white bg-myblue"
+          ><BasicButton class="text-white bg-myblue" aria-label="Zadzwoń do nas"
             >Zadzwoń do nas</BasicButton
           ></a
         >
@@ -36,6 +36,7 @@
           class="flex sm:hidden text-xl text-white bg-myblue active:text-white active:bg-myblue"
           :class="{ 'bg-white': isMenuVisible, 'text-blue-600': isMenuVisible }"
           @click="toggleMenu"
+          aria-label="Otwórz menu"
         >
           <Transition name="fade" mode="out-in">
             <i class="fa-solid fa-bars" v-if="!isMenuVisible"></i>
@@ -92,20 +93,23 @@
         </div>
         <div class="buttons flex gap-6">
           <a href="#gallery">
-            <BasicButton class="text-white bg-myblue"
+            <BasicButton
+              class="text-white bg-myblue"
+              aria-label="Zobacz zdjęcia"
               >Zobacz zdjęcia</BasicButton
             >
           </a>
           <a href="https://kwasu.pl/" target="_blank"
             ><BasicButton
               class="bg-white text-myblue font-bold hover:text-white hover:bg-myblue"
+              aria-label="Zadzwoń do nas"
               >Zadzwoń do nas</BasicButton
             ></a
           >
         </div>
       </div>
       <img
-        src="./assets/cars.png"
+        src="./assets/cars.webp"
         alt=""
         class="absolute -right-32 sm:-right-24 lg:-right-0 bottom-14 md:bottom-24 select-none"
         draggable="false"

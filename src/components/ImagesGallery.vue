@@ -2,7 +2,11 @@
   <div class="flex flex-col h-full w-full py-8 lg:py-20 overflow-hidden">
     <carousel :items-to-show="2.16" class="w-full h-auto scroll-m-8">
       <slide v-for="(image, index) in chosenImages" :key="index">
-        <ImageComponent :image="image" ref="imagesRef"></ImageComponent>
+        <ImageComponent
+          :image="image"
+          ref="imagesRef"
+          :alt="`Zdjęcie nr.${index + 1}`"
+        ></ImageComponent>
       </slide>
 
       <template #addons>
