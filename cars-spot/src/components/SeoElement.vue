@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-start justify-between w-full text-white">
-    <p class="font-bebas text-[25px]">
+    <p class="font-bebas text-2xl tracking-tight">
       Id nostrud enim esse consectetur in eu mollit fugiat aute. Velit nulla
       commodo.
     </p>
@@ -47,7 +47,6 @@
 import { ref } from "vue";
 
 const isExpanded = ref(false);
-const scrollTo = ref(null);
 
 const expand = () => {
   isExpanded.value = !isExpanded.value;
@@ -57,20 +56,22 @@ const expand = () => {
 <style scoped>
 .container {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3) inset;
+  max-height: 1000px;
 }
 
 .expand-enter-active,
 .expand-leave-active {
-  height: 16.125rem;
   padding: 1rem;
   overflow: hidden;
   transition: all 0.5s ease;
+  opacity: 1;
 }
 
 .expand-leave-to,
 .expand-enter-from {
+  opacity: 0;
   padding: 0 1rem;
-  height: 0;
+  max-height: 0;
   overflow: hidden;
 }
 </style>
