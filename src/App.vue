@@ -260,4 +260,61 @@ const handleClickOutside = (event) => {
   max-height: 0;
   overflow: hidden;
 }
+
+.carousel__pagination {
+  margin: 2rem 0 0 0;
+}
+
+.carousel__pagination-button {
+  padding: 3px;
+  transition: all 0.3s ease;
+}
+
+.carousel__pagination-button::after {
+  width: 6px;
+  height: 6px;
+  border-radius: 1000px;
+  background-color: #f1f1f1;
+}
+
+.carousel__pagination-button--active::after {
+  background-color: #0147ff;
+}
+
+@media (hover: hover) {
+  .carousel__pagination-button:hover::after {
+    background-color: #dddddd;
+  }
+  .carousel__pagination-button--active:hover::after {
+    background-color: #0147ff;
+  }
+}
+@media (min-width: 640px) {
+  .carousel__pagination {
+    margin: 3.2rem 0 0 0;
+  }
+
+  .carousel__pagination-button {
+    padding: 5px;
+  }
+
+  .carousel__pagination-button::after {
+    width: 9px;
+    height: 9px;
+  }
+
+  .carousel__slide:first-of-type {
+    margin: 0 2rem 0 2rem;
+  }
+
+  .carousel__slide:first-of-type {
+    margin: 0 2rem 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel__slide:first-of-type {
+    margin: 0 2rem 0 5rem;
+  }
+}
 </style>
