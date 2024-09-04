@@ -15,6 +15,7 @@
           v-for="(image, index) in chosenImages"
           :key="index"
           ref="imagesRef"
+          @click="slide(index + 1)"
         >
           <ImageComponent
             :image="image"

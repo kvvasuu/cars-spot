@@ -127,7 +127,7 @@
       </div>
       <div class="relative flex justify-start w-full mt-4 sm:mt8">
         <span
-          class="mr-2 sm:mr-10 font-robotoflex text-xs sm:text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
+          class="mr-2 sm:mr-12 font-robotoflex text-xs sm:text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
           :class="{ active: cars }"
           @click="changeGalleryPage('cars')"
           >Samochody osobowe</span
@@ -220,7 +220,6 @@ const handleClickOutside = (event) => {
 <style scoped>
 .active {
   color: #0147ff;
-  text-underline-offset: 6px;
   font-weight: 600;
   border-bottom: 1px solid #0147ff;
   padding: 0.1rem;
