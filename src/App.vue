@@ -220,7 +220,6 @@ const handleClickOutside = (event) => {
 <style scoped>
 .active {
   color: #0147ff;
-  /* text-decoration: underline; */
   text-underline-offset: 6px;
   font-weight: 600;
   border-bottom: 1px solid #0147ff;

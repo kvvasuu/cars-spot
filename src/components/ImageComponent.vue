@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-auto h-auto shrink-0 relative snap-center overflow-hidden"
+    class="w-auto h-auto shrink-0 relative snap-center overflow-hidden image"
     :class="{ 'cursor-pointer': !isOverlayVisible }"
     @click="toggleOverlay"
     ref="containerRef"
@@ -52,9 +52,16 @@ const handleClickOutside = (event) => {
     document.removeEventListener("click", handleClickOutside);
   }
 };
+defineExpose({
+  containerRef,
+});
 </script>
 
 <style scoped>
+.image {
+  user-select: none;
+}
+
 .fade-slide-enter-active,
 .fade-slide-leave-active {
   opacity: 1;
