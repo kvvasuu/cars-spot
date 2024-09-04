@@ -1,6 +1,6 @@
 # Cars Spot - Landing Page <img src="https://raw.githubusercontent.com/kvvasuu/cars-spot/main/public/favicon.ico" alt="icon" width="24"/>
 
-![App demo](https://raw.githubusercontent.com/kvvasuu/cars-spot/main/demo.png "App demo")
+![App demo](https://raw.githubusercontent.com/kvvasuu/cars-spot/main/demo-screen.png "App demo")
 
 ## :globe_with_meridians: Opis projektu
 
