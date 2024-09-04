@@ -34,7 +34,7 @@
         >
         <BasicButton
           class="flex sm:hidden text-xl text-white bg-myblue active:text-white active:bg-myblue"
-          :class="{ 'bg-white': isMenuVisible, 'text-blue-700': isMenuVisible }"
+          :class="{ 'bg-white': isMenuVisible, 'text-blue-600': isMenuVisible }"
           @click="toggleMenu"
         >
           <Transition name="fade" mode="out-in">
@@ -79,16 +79,18 @@
     >
       <div class="flex flex-col items-start z-20">
         <div class="content">
-          <h1 class="font-bebas font-primary text-7xl">
+          <h1
+            class="font-bebas font-primary text-[76px] leading-[84px] tracking-tighter"
+          >
             Sprzedajemy samochody<br />
             z europy
           </h1>
-          <p class="font-roboto font-primary my-8">
-            Kup komfortowy pojazd, aby każda<br />
-            podróż była wyjątkowym przeżyciem.
+          <p class="font-roboto font-primary mt-8 mb-12 leading-6">
+            Kup komfortowy pojazd, aby każda podróż<br />
+            była wyjątkowym przeżyciem.
           </p>
         </div>
-        <div class="buttons flex gap-6 sm:gap-8">
+        <div class="buttons flex gap-6">
           <a href="#gallery">
             <BasicButton class="text-white bg-myblue"
               >Zobacz zdjęcia</BasicButton
@@ -121,15 +123,15 @@
       </div>
       <div class="relative flex justify-start w-full mt-4 sm:mt8">
         <span
-          class="mr-2 sm:mr-8 font-robotoflex text-xs sm:text-[15px] font-medium text-black cursor-pointer select-none transition-all"
+          class="mr-2 sm:mr-10 font-robotoflex text-xs sm:text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
           :class="{ active: cars }"
           @click="changeGalleryPage('cars')"
-          >&nbsp;Samochody osobowe&nbsp;</span
+          >Samochody osobowe</span
         ><span
-          class="font-robotoflex text-xs sm:text-[15px] text-[15px] font-medium text-black cursor-pointer select-none transition-all"
+          class="font-robotoflex text-xs sm:text-[15px] text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
           :class="{ active: !cars }"
           @click="changeGalleryPage('trucks')"
-          >&nbsp;Samochody dostawcze&nbsp;</span
+          >Samochody dostawcze</span
         >
       </div>
     </section>
@@ -214,9 +216,11 @@ const handleClickOutside = (event) => {
 <style scoped>
 .active {
   color: #0147ff;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   text-underline-offset: 6px;
   font-weight: 600;
+  border-bottom: 1px solid #0147ff;
+  padding: 0.1rem;
 }
 
 .slide-enter-active,
@@ -259,62 +263,5 @@ const handleClickOutside = (event) => {
   padding: 0 1rem;
   max-height: 0;
   overflow: hidden;
-}
-
-.carousel__pagination {
-  margin: 2rem 0 0 0 !important;
-}
-
-.carousel__pagination-button {
-  padding: 3px !important;
-  transition: all 0.3s ease !important;
-}
-
-.carousel__pagination-button::after {
-  width: 6px !important;
-  height: 6px !important;
-  border-radius: 1000px !important;
-  background-color: #f1f1f1 !important;
-}
-
-.carousel__pagination-button--active::after {
-  background-color: #0147ff !important;
-}
-
-@media (hover: hover) {
-  .carousel__pagination-button:hover::after {
-    background-color: #dddddd !important;
-  }
-  .carousel__pagination-button--active:hover::after {
-    background-color: #0147ff !important;
-  }
-}
-@media (min-width: 640px) {
-  .carousel__pagination {
-    margin: 3.2rem 0 0 0 !important;
-  }
-
-  .carousel__pagination-button {
-    padding: 5px !important;
-  }
-
-  .carousel__pagination-button::after {
-    width: 9px !important;
-    height: 9px !important;
-  }
-
-  .carousel__slide:first-of-type {
-    margin: 0 2rem 0 2rem !important;
-  }
-
-  .carousel__slide:first-of-type {
-    margin: 0 2rem 0 2rem !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .carousel__slide:first-of-type {
-    margin: 0 2rem 0 5rem !important;
-  }
 }
 </style>
