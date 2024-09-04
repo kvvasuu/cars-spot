@@ -365,6 +365,7 @@
                   return;
               const rect = root.value.getBoundingClientRect();
               slideWidth.value = rect.width / config.itemsToShow;
+              
           }
           function updateSlidesData() {
               if (slidesCount.value <= 0)
@@ -444,6 +445,7 @@
               const direction = config.dir === 'rtl' ? -1 : 1;
               const tolerance = Math.sign(dragged.x) * 0.4;
               const draggedSlides = Math.round(dragged.x / slideWidth.value + tolerance) * direction;
+            
               // Prevent clicking if there is clicked slides
               if (draggedSlides && !isTouch) {
                   const captureClick = (e) => {
