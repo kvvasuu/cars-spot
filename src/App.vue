@@ -262,59 +262,59 @@ const handleClickOutside = (event) => {
 }
 
 .carousel__pagination {
-  margin: 2rem 0 0 0;
+  margin: 2rem 0 0 0 !important;
 }
 
 .carousel__pagination-button {
-  padding: 3px;
-  transition: all 0.3s ease;
+  padding: 3px !important;
+  transition: all 0.3s ease !important;
 }
 
 .carousel__pagination-button::after {
-  width: 6px;
-  height: 6px;
-  border-radius: 1000px;
-  background-color: #f1f1f1;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 1000px !important;
+  background-color: #f1f1f1 !important;
 }
 
 .carousel__pagination-button--active::after {
-  background-color: #0147ff;
+  background-color: #0147ff !important;
 }
 
 @media (hover: hover) {
   .carousel__pagination-button:hover::after {
-    background-color: #dddddd;
+    background-color: #dddddd !important;
   }
   .carousel__pagination-button--active:hover::after {
-    background-color: #0147ff;
+    background-color: #0147ff !important;
   }
 }
 @media (min-width: 640px) {
   .carousel__pagination {
-    margin: 3.2rem 0 0 0;
+    margin: 3.2rem 0 0 0 !important;
   }
 
   .carousel__pagination-button {
-    padding: 5px;
+    padding: 5px !important;
   }
 
   .carousel__pagination-button::after {
-    width: 9px;
-    height: 9px;
+    width: 9px !important;
+    height: 9px !important;
   }
 
   .carousel__slide:first-of-type {
-    margin: 0 2rem 0 2rem;
+    margin: 0 2rem 0 2rem !important;
   }
 
   .carousel__slide:first-of-type {
-    margin: 0 2rem 0 2rem;
+    margin: 0 2rem 0 2rem !important;
   }
 }
 
 @media (min-width: 1024px) {
   .carousel__slide:first-of-type {
-    margin: 0 2rem 0 5rem;
+    margin: 0 2rem 0 5rem !important;
   }
 }
 </style>
