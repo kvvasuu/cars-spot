@@ -1,4 +1,4 @@
-# Cars Spot - Landing Page <img src="https://raw.githubusercontent.com/kvvasuu/cars-spot/main/public/favicon.ico" alt="icon" width="24"/>
+# Cars Spot <img src="https://raw.githubusercontent.com/kvvasuu/cars-spot/main/public/favicon.ico" alt="icon" width="24"/>
 
 ![App demo](https://raw.githubusercontent.com/kvvasuu/cars-spot/main/demo-screen.png "App demo")
 
