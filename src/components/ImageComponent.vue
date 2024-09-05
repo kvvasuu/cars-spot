@@ -20,7 +20,9 @@
         <p class="font-bebas text-lg sm:text-4xl text-white">
           {{ image.name }}
         </p>
-        <p class="font-roboto text-white">{{ image.description }}</p>
+        <p class="font-roboto text-xs sm:text-base text-white">
+          {{ image.description }}
+        </p>
       </div>
     </Transition>
   </div>
@@ -30,6 +32,7 @@
 import { ref, computed } from "vue";
 
 const props = defineProps(["image"]);
+const emit = defineEmits(["start", "stop"]);
 
 const getImageSrc = computed(() => {
   return new URL(`../assets/gallery/${props.image.img}.webp`, import.meta.url)
@@ -40,6 +43,7 @@ const isOverlayVisible = ref(false);
 
 const toggleOverlay = () => {
   isOverlayVisible.value = true;
+  emit("stop");
   document.addEventListener("click", handleClickOutside);
 };
 
@@ -49,12 +53,10 @@ const handleClickOutside = (event) => {
   const path = event.composedPath();
   if (!path.includes(containerRef.value)) {
     isOverlayVisible.value = false;
+    emit("start");
     document.removeEventListener("click", handleClickOutside);
   }
 };
-defineExpose({
-  containerRef,
-});
 </script>
 
 <style scoped>

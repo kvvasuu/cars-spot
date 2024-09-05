@@ -20,6 +20,8 @@
           <ImageComponent
             :image="image"
             :alt="`Zdjęcie nr.${index + 1}`"
+            @start="startAutoplay"
+            @stop="stopAutoplay"
           ></ImageComponent>
         </div>
       </div>
@@ -40,7 +42,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onBeforeUnmount } from "vue";
 import images from "../assets/images.json";
 import ImageComponent from "./ImageComponent.vue";
 
@@ -60,6 +62,7 @@ const setImageIndex = (index) => {
 const trackRef = ref(null);
 
 const slide = (index) => {
+  console.log(currentImageIndex.value, index);
   if (currentImageIndex.value === index - 1) return;
   setImageIndex(index);
 
@@ -86,6 +89,34 @@ const slide = (index) => {
       break;
   }
 };
+
+const isPlaying = ref(false);
+const autoplay = () => {
+  let index = currentImageIndex.value + 2;
+
+  if (index > chosenImages.value.length) {
+    currentImageIndex.value = -1;
+    index = 1;
+  }
+
+  slide(index);
+};
+let autoplayInterval;
+const startAutoplay = () => {
+  if (isPlaying.value) return;
+  isPlaying.value = true;
+  autoplayInterval = setInterval(autoplay, 4000);
+};
+const stopAutoplay = () => {
+  isPlaying.value = false;
+  clearInterval(autoplayInterval);
+};
+
+startAutoplay();
+
+onBeforeUnmount(() => {
+  stopAutoplay();
+});
 </script>
 
 <style scoped>
