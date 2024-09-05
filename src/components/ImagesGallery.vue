@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery py-8 lg:py-20 relative">
+  <div class="gallery py-8 lg:py-20 relative" aria-label="Galeria zdjęć">
     <div
       class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-4rem)] sm:top-[calc(50%-5rem)] left-4 sm:left-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
       @click="slideLeft"
@@ -36,6 +36,7 @@
           :key="index"
           ref="imagesRef"
           @click="slide(index + 1)"
+          aria-label="Slajd"
         >
           <ImageComponent
             :image="image"
@@ -58,6 +59,8 @@
         <div
           class="bg-stone-200 group-hover:bg-zinc-300 w-2 h-2 rounded-full transition-all"
           :class="{ active: index === currentImageIndex + 1 }"
+          role="button"
+          aria-label="Wybierz slajd"
         ></div>
       </div>
     </div>

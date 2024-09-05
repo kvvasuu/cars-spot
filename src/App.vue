@@ -12,20 +12,21 @@
             draggable="false"
         /></a>
       </div>
-      <div
+      <nav
         class="hidden sm:flex justify-center font-robotoflex font-normal text-primary gap-6"
+        aria-label="Główna nawigacja"
       >
         <a
           href="#gallery"
           class="transition hover:drop-shadow hover:-translate-y-px"
-          ><nav>Galeria zdjęć</nav></a
+          >Galeria zdjęć</a
         >
         <a
           href="#footer"
           class="transition hover:drop-shadow hover:-translate-y-px"
-          ><nav>FaQ</nav></a
+          >FaQ</a
         >
-      </div>
+      </nav>
       <div class="sm:flex justify-end w-auto sm:w-1/3 relative">
         <a href="https://kwasu.pl/" target="_blank" class="hidden sm:flex"
           ><BasicButton class="text-white bg-myblue" aria-label="Zadzwoń do nas"
@@ -37,19 +38,23 @@
           :class="{ 'bg-white': isMenuVisible }"
           @click="toggleMenu"
           aria-label="Otwórz menu"
+          :aria-expanded="isMenuVisible"
+          aria-controls="menu"
         >
           <Transition name="fade" mode="out-in">
             <i class="fa-solid fa-bars" v-if="!isMenuVisible"></i>
             <i class="fa-solid fa-xmark text-myblue" v-else></i> </Transition
         ></BasicButton>
         <Transition name="expand">
-          <div
-            class="absolute -bottom-1 right-0 translate-y-full z-50 w-40 max-h-[9rem]"
+          <nav
+            class="absolute -bottom-1 right-0 translate-y-full z-50 w-40 max-h-40"
             ref="menuRef"
             v-if="isMenuVisible"
+            aria-label="Główna nawigacja"
+            id="menu"
           >
             <ul
-              class="w-full h-full px-2 flex flex-col text-end bg-primary/75 backdrop-blur rounded-xl font-bebas text-2xl text-white"
+              class="w-full h-full p-2 flex flex-col text-end bg-primary/75 backdrop-blur rounded-xl font-bebas text-2xl text-white"
             >
               <a
                 href="#gallery"
@@ -71,7 +76,7 @@
                 >Zadzwoń do nas</a
               >
             </ul>
-          </div>
+          </nav>
         </Transition>
       </div>
     </div>
@@ -122,21 +127,23 @@
       class="relative flex flex-col items-start justify-end w-full h-auto lg:h-[208px] px-8 lg:px-20"
     >
       <div class="relative flex flex-col">
-        <p class="font-roboto text-[21.5px] text-myblue">Prezentacja firmy</p>
-        <p class="font-bebas text-[24px] sm:text-[40px] text-primarydark">
+        <h3 class="font-roboto text-[21.5px] text-myblue">Prezentacja firmy</h3>
+        <h2 class="font-bebas text-[24px] sm:text-[40px] text-primarydark">
           Zobacz naszą galerię zdjęć
-        </p>
+        </h2>
       </div>
       <div class="relative flex justify-start w-full mt-4 sm:mt8">
         <span
           class="mr-2 sm:mr-12 font-robotoflex text-xs sm:text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
           :class="{ active: cars }"
           @click="changeGalleryPage('cars')"
+          role="button"
           >Samochody osobowe</span
         ><span
           class="font-robotoflex text-xs sm:text-[15px] text-[15px] font-medium text-black cursor-pointer select-none transition-all tracking-tight"
           :class="{ active: !cars }"
           @click="changeGalleryPage('trucks')"
+          role="button"
           >Samochody dostawcze</span
         >
       </div>
@@ -148,6 +155,7 @@
     </section>
     <section
       class="bg-primary flex flex-col items-center w-full py-20 px-8 lg:px-28"
+      id="articles"
     >
       <div class="flex flex-col sm:flex-row gap-12">
         <div class="w-full sm:w-1/2"><SeoElement></SeoElement></div>

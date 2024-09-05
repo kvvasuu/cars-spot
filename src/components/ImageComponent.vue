@@ -4,6 +4,9 @@
     :class="{ 'cursor-pointer': !isOverlayVisible }"
     @click="toggleOverlay"
     ref="containerRef"
+    role="button"
+    :aria-expanded="isOverlayVisible"
+    aria-controls="image-info"
   >
     <img
       :src="getImageSrc"
@@ -16,10 +19,11 @@
       <div
         class="absolute w-full bottom-0 left-0 flex flex-col items-start justify-start backdrop-blur-lg bg-black/75 p-3"
         v-if="isOverlayVisible"
+        id="image-info"
       >
-        <p class="font-bebas text-lg sm:text-4xl text-white">
+        <h2 class="font-bebas text-lg sm:text-4xl text-white">
           {{ image.name }}
-        </p>
+        </h2>
         <p class="font-roboto text-xs sm:text-base text-white">
           {{ image.description }}
         </p>

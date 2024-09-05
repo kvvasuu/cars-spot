@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col items-start justify-between w-full text-white">
-    <p class="font-bebas text-2xl tracking-tight">
+  <article class="flex flex-col items-start justify-between w-full text-white">
+    <h3 class="font-bebas text-2xl tracking-tight">
       Id nostrud enim esse consectetur in eu mollit fugiat aute. Velit nulla
       commodo.
-    </p>
+    </h3>
     <p class="font-roboto text-[14px] mt-4 mb-6">
       Mauris varius ipsum mauris, rutrum lobortis magna efficitur a. Donec
       egestas, nisl vehicula feugiat ornare, diam turpis efficitur mi, ac
@@ -13,6 +13,8 @@
       class="flex font-roboto text-[14px] border-b-2 border-b-white bg-transparent"
       @click="expand"
       aria-label="Rozwiń"
+      :aria-expanded="isExpanded"
+      aria-controls="extra-info"
     >
       Rozwiń
       <img
@@ -25,6 +27,7 @@
       <div
         class="container p-4 gap-2 transition-all duration-500 w-full font-roboto text-[14px] mt-4 bg-neutral-900 rounded-lg"
         v-if="isExpanded"
+        id="extra-info"
       >
         <p>
           Automobilis, mirabilis opus hominum ingenii, est instrumentum
@@ -45,7 +48,7 @@
         </p>
       </div>
     </Transition>
-  </div>
+  </article>
 </template>
 
 <script setup>
