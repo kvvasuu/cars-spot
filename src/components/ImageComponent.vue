@@ -57,6 +57,10 @@ const handleClickOutside = (event) => {
     document.removeEventListener("click", handleClickOutside);
   }
 };
+
+defineExpose({
+  isOverlayVisible,
+});
 </script>
 
 <style scoped>

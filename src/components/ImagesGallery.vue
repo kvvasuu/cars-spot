@@ -1,5 +1,25 @@
 <template>
-  <div class="py-8 lg:py-20">
+  <div class="buttons py-8 lg:py-20 relative">
+    <div
+      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-5rem)] left-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
+      @click="slideLeft"
+      v-if="currentImageIndex > 0"
+    >
+      <div
+        class="w-10 h-10 border-b-transparent border-r-transparent border-t-8 border-l-8 border-white/75 -rotate-45"
+      ></div>
+    </div>
+
+    <div
+      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-5rem)] right-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
+      @click="slideRight"
+      v-if="currentImageIndex < chosenImages.length - 1"
+    >
+      <div
+        class="w-10 h-10 border-b-transparent border-l-transparent border-t-8 border-r-8 border-white/75 rotate-45"
+      ></div>
+    </div>
+
     <div
       id="carousel_wrapper"
       class="w-full overflow-x-hidden overflow-y-hidden mb-8 sm:mb-12 relative h-[200px] sm:h-[446px]"
@@ -30,7 +50,10 @@
       <div
         class="group py-2 px-1 cursor-pointer"
         v-for="index in chosenImages.length"
-        @click="slide(index)"
+        @click="
+          slide(index);
+          resetAutoplay();
+        "
       >
         <div
           class="bg-stone-200 group-hover:bg-zinc-300 w-2 h-2 rounded-full transition-all"
@@ -54,6 +77,8 @@ const chosenImages = computed(() => {
 
 const imagesRef = ref(null);
 const currentImageIndex = ref(0);
+
+let autoplayInterval;
 
 const setImageIndex = (index) => {
   currentImageIndex.value = index - 1;
@@ -89,6 +114,18 @@ const slide = (index) => {
   }
 };
 
+const slideLeft = () => {
+  if (currentImageIndex.value <= 0) return;
+  slide(currentImageIndex.value);
+  resetAutoplay();
+};
+
+const slideRight = () => {
+  if (currentImageIndex.value >= chosenImages.length) return;
+  slide(currentImageIndex.value + 2);
+  resetAutoplay();
+};
+
 const isPlaying = ref(false);
 const autoplay = () => {
   let index = currentImageIndex.value + 2;
@@ -100,7 +137,6 @@ const autoplay = () => {
 
   slide(index);
 };
-let autoplayInterval;
 const startAutoplay = () => {
   if (isPlaying.value) return;
   isPlaying.value = true;
@@ -109,6 +145,10 @@ const startAutoplay = () => {
 const stopAutoplay = () => {
   isPlaying.value = false;
   clearInterval(autoplayInterval);
+};
+const resetAutoplay = () => {
+  stopAutoplay();
+  startAutoplay();
 };
 
 startAutoplay();
@@ -126,5 +166,8 @@ onBeforeUnmount(() => {
 }
 .group:hover .active {
   background-color: #0147ff;
+}
+.buttons:hover .button {
+  opacity: 1;
 }
 </style>

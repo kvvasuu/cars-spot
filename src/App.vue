@@ -240,17 +240,6 @@ const handleClickOutside = (event) => {
   transform: translateX(100rem);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  opacity: 1;
-  transition: all 0.2s ease;
-}
-
-.fade-leave-to,
-.fade-enter-from {
-  opacity: 0;
-}
-
 .expand-enter-active,
 .expand-leave-active {
   padding: 1rem;
