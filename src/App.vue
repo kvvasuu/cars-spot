@@ -42,35 +42,37 @@
             <i class="fa-solid fa-bars" v-if="!isMenuVisible"></i>
             <i class="fa-solid fa-xmark text-myblue" v-else></i> </Transition
         ></BasicButton>
-        <div
-          class="absolute bottom-0 right-0 translate-y-full z-50"
-          ref="menuRef"
-          v-if="isMenuVisible"
-        >
-          <ul
-            class="w-40 max-h-full p-2 my-2 flex flex-col text-end bg-primary/75 backdrop-blur rounded-xl font-bebas text-2xl text-white"
+        <Transition name="expand">
+          <div
+            class="absolute -bottom-1 right-0 translate-y-full z-50 w-40 max-h-[9rem]"
+            ref="menuRef"
+            v-if="isMenuVisible"
           >
-            <a
-              href="#gallery"
-              @click="toggleMenu"
-              class="flex items-center p-2 justify-end border-b hover:bg-zinc-400 rounded-t-md"
-              >Galeria</a
+            <ul
+              class="w-full h-full px-2 flex flex-col text-end bg-primary/75 backdrop-blur rounded-xl font-bebas text-2xl text-white"
             >
-            <a
-              href="#footer"
-              @click="toggleMenu"
-              class="flex items-center p-2 justify-end border-b hover:bg-zinc-400"
-              >FaQ</a
-            >
-            <a
-              href="https://kwasu.pl/"
-              target="_blank"
-              @click="toggleMenu"
-              class="flex items-center p-2 justify-end hover:bg-zinc-400 rounded-b-md"
-              >Zadzwoń do nas</a
-            >
-          </ul>
-        </div>
+              <a
+                href="#gallery"
+                @click="toggleMenu"
+                class="flex items-center p-2 justify-end border-b hover:bg-zinc-400 rounded-t-md"
+                >Galeria</a
+              >
+              <a
+                href="#footer"
+                @click="toggleMenu"
+                class="flex items-center p-2 justify-end border-b hover:bg-zinc-400"
+                >FaQ</a
+              >
+              <a
+                href="https://kwasu.pl/"
+                target="_blank"
+                @click="toggleMenu"
+                class="flex items-center p-2 justify-end hover:bg-zinc-400 rounded-b-md"
+                >Zadzwoń do nas</a
+              >
+            </ul>
+          </div>
+        </Transition>
       </div>
     </div>
   </header>
@@ -242,16 +244,12 @@ const handleClickOutside = (event) => {
 
 .expand-enter-active,
 .expand-leave-active {
-  padding: 1rem;
   overflow: hidden;
   transition: all 0.5s ease;
-  opacity: 1;
 }
 
 .expand-leave-to,
 .expand-enter-from {
-  opacity: 0;
-  padding: 0 1rem;
   max-height: 0;
   overflow: hidden;
 }
