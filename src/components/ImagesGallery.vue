@@ -159,8 +159,6 @@ const isTouchDevice =
   navigator.maxTouchPoints > 0 ||
   navigator.msMaxTouchPoints > 0;
 
-console.log(isTouchDevice);
-
 startAutoplay();
 
 onBeforeUnmount(() => {
