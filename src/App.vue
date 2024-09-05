@@ -34,13 +34,13 @@
         >
         <BasicButton
           class="flex sm:hidden text-xl text-white bg-myblue active:text-white active:bg-myblue"
-          :class="{ 'bg-white': isMenuVisible, 'text-blue-600': isMenuVisible }"
+          :class="{ 'bg-white': isMenuVisible }"
           @click="toggleMenu"
           aria-label="Otwórz menu"
         >
           <Transition name="fade" mode="out-in">
             <i class="fa-solid fa-bars" v-if="!isMenuVisible"></i>
-            <i class="fa-solid fa-xmark" v-else></i> </Transition
+            <i class="fa-solid fa-xmark text-myblue" v-else></i> </Transition
         ></BasicButton>
         <div
           class="absolute bottom-0 right-0 translate-y-full z-50"
