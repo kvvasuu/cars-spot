@@ -62,7 +62,6 @@ const setImageIndex = (index) => {
 const trackRef = ref(null);
 
 const slide = (index) => {
-  console.log(currentImageIndex.value, index);
   if (currentImageIndex.value === index - 1) return;
   setImageIndex(index);
 
