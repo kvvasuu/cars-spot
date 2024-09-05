@@ -1,22 +1,22 @@
 <template>
-  <div class="buttons py-8 lg:py-20 relative">
+  <div class="gallery py-8 lg:py-20 relative">
     <div
-      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-5rem)] left-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
+      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-4rem)] sm:top-[calc(50%-5rem)] left-4 sm:left-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
       @click="slideLeft"
-      v-if="currentImageIndex > 0"
+      v-if="!isTouchDevice && currentImageIndex > 0"
     >
       <div
-        class="w-10 h-10 border-b-transparent border-r-transparent border-t-8 border-l-8 border-white/75 -rotate-45"
+        class="w-6 sm:w-10 h-6 sm:h-10 border-b-transparent border-r-transparent border-t-4 sm:border-t-8 border-l-4 sm:border-l-8 border-white/75 -rotate-45"
       ></div>
     </div>
 
     <div
-      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-5rem)] right-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
+      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-4rem)] sm:top-[calc(50%-5rem)] right-4 sm:right-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
       @click="slideRight"
-      v-if="currentImageIndex < chosenImages.length - 1"
+      v-if="!isTouchDevice && currentImageIndex < chosenImages.length - 1"
     >
       <div
-        class="w-10 h-10 border-b-transparent border-l-transparent border-t-8 border-r-8 border-white/75 rotate-45"
+        class="w-6 sm:w-10 h-6 sm:h-10 border-b-transparent border-l-transparent border-t-4 sm:border-t-8 border-r-4 sm:border-r-8 border-white/75 rotate-45"
       ></div>
     </div>
 
@@ -151,6 +151,13 @@ const resetAutoplay = () => {
   startAutoplay();
 };
 
+const isTouchDevice =
+  "ontouchstart" in window ||
+  navigator.maxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0;
+
+console.log(isTouchDevice);
+
 startAutoplay();
 
 onBeforeUnmount(() => {
@@ -167,7 +174,7 @@ onBeforeUnmount(() => {
 .group:hover .active {
   background-color: #0147ff;
 }
-.buttons:hover .button {
+.gallery:hover .button {
   opacity: 1;
 }
 </style>
