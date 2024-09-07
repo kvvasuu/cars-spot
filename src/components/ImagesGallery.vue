@@ -38,8 +38,8 @@
       <div
         id="carousel_track"
         ref="trackRef"
-        :style="{ left: `${trackPosition}` }"
-        class="flex ml-6 md:ml-4 lg:ml-12 transition-all duration-1000 absolute left-0 top-0"
+        :style="{ transform: `translateX(${trackPosition})` }"
+        class="flex ml-6 md:ml-4 lg:ml-12 transition-all duration-1000 absolute translate-x-0 top-0"
         :class="{ dragging: isDragging }"
       >
         <div
@@ -184,8 +184,14 @@ const dragStart = (event) => {
   isDragging.value = false;
   isClicked.value = true;
   startX.value = event.clientX;
-  position.value = Number(
-    window.getComputedStyle(trackRef.value).left.split("px")[0]
+  if (isTouchDevice && event.touches) {
+    startX.value = event.touches[0].clientX;
+  }
+  position.value = parseFloat(
+    window
+      .getComputedStyle(trackRef.value)
+      .transform.match(/matrix.*\((.+)\)/)[1]
+      .split(", ")[4]
   );
   lastPosition.value = position.value;
 };
@@ -219,17 +225,25 @@ const dragStop = (event) => {
       slide(closestIndex + 1);
     }
   }
+  resetAutoplay();
 };
 
 const dragMove = (event) => {
+  event.preventDefault();
+
   if (!isClicked.value) return;
-  const deltaX = event.clientX - startX.value;
+  let deltaX = event.clientX - startX.value;
+
+  if (isTouchDevice && event.touches) {
+    deltaX = event.touches[0].clientX - startX.value;
+  }
 
   if (Math.abs(deltaX) > 10) {
     isDragging.value = true;
   }
 
   if (!isDragging.value) return;
+
   document.body.style.cursor = "grabbing";
   position.value = lastPosition.value + deltaX;
   trackPosition.value = `${position.value}px`;

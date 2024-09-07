@@ -68,6 +68,11 @@ const handleClickOutside = (event) => {
   }
 };
 
+const isTouchDevice =
+  "ontouchstart" in window ||
+  navigator.maxTouchPoints > 0 ||
+  navigator.msMaxTouchPoints > 0;
+
 //Dragscroll
 
 const isDragging = ref(false);
@@ -76,10 +81,17 @@ const startX = ref(0);
 const onMouseDown = (event) => {
   isDragging.value = false;
   startX.value = event.clientX;
+  if (isTouchDevice && event.touches) {
+    startX.value = event.touches[0].clientX;
+  }
 };
 
 const onMouseMove = (event) => {
-  const distanceX = Math.abs(event.clientX - startX.value);
+  let distanceX = Math.abs(event.clientX - startX.value);
+
+  if (isTouchDevice && event.touches) {
+    distanceX = Math.abs(event.touches[0].clientX - startX.value);
+  }
 
   // Jeżeli mysz przesunie się powyżej progu, oznacz jako przeciąganie
   if (distanceX > 10) {
