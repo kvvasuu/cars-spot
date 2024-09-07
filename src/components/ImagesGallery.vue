@@ -1,29 +1,5 @@
 <template>
-  <div class="gallery py-8 lg:py-20 relative" aria-label="Galeria zdjęć">
-    <div
-      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-4rem)] sm:top-[calc(50%-5rem)] left-4 sm:left-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
-      @click="slideLeft"
-      v-if="!isTouchDevice && currentImageIndex > 0 && !isDragging"
-    >
-      <div
-        class="w-6 sm:w-10 h-6 sm:h-10 border-b-transparent border-r-transparent border-t-4 sm:border-t-8 border-l-4 sm:border-l-8 border-white/75 -rotate-45"
-      ></div>
-    </div>
-
-    <div
-      class="button opacity-0 p-4 pl-6 absolute top-[calc(50%-4rem)] sm:top-[calc(50%-5rem)] right-4 sm:right-[74px] cursor-pointer z-40 hover:scale-105 active:scale-95 transition-all"
-      @click="slideRight"
-      v-if="
-        !isTouchDevice &&
-        currentImageIndex < chosenImages.length - 1 &&
-        !isDragging
-      "
-    >
-      <div
-        class="w-6 sm:w-10 h-6 sm:h-10 border-b-transparent border-l-transparent border-t-4 sm:border-t-8 border-r-4 sm:border-r-8 border-white/75 rotate-45"
-      ></div>
-    </div>
-
+  <div class="py-8 lg:py-20 relative" aria-label="Galeria zdjęć">
     <div
       id="carousel_wrapper"
       class="w-full overflow-x-hidden overflow-y-hidden mb-8 sm:mb-12 relative h-[200px] sm:h-[446px]"
@@ -128,18 +104,6 @@ const slide = (index) => {
       }px) - ${imageWidth + imageMargin + trackMargin}px)`;
       break;
   }
-};
-
-const slideLeft = () => {
-  if (currentImageIndex.value <= 0) return;
-  slide(currentImageIndex.value);
-  resetAutoplay();
-};
-
-const slideRight = () => {
-  if (currentImageIndex.value >= chosenImages.length) return;
-  slide(currentImageIndex.value + 2);
-  resetAutoplay();
 };
 
 const isPlaying = ref(false);
@@ -267,8 +231,5 @@ onBeforeUnmount(() => {
 }
 .group:hover .active {
   background-color: #0147ff;
-}
-.gallery:hover .button {
-  opacity: 1;
 }
 </style>
