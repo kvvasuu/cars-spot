@@ -188,8 +188,8 @@ const dragStop = (event) => {
     if (closestIndex !== null) {
       slide(closestIndex + 1);
     }
+    resetAutoplay();
   }
-  resetAutoplay();
 };
 
 const dragMove = (event) => {
@@ -213,7 +213,7 @@ const dragMove = (event) => {
   trackPosition.value = `${position.value}px`;
 };
 
-/* startAutoplay(); */
+startAutoplay();
 
 onBeforeUnmount(() => {
   stopAutoplay();
