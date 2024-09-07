@@ -2,11 +2,16 @@
   <div
     class="w-auto h-auto shrink-0 relative snap-center overflow-hidden image"
     :class="{ 'cursor-pointer': !isOverlayVisible }"
-    @click="toggleOverlay"
     ref="containerRef"
     role="button"
     :aria-expanded="isOverlayVisible"
     aria-controls="image-info"
+    @mousedown="onMouseDown"
+    @mouseup="onMouseUp"
+    @mousemove="onMouseMove"
+    @touchstart="onMouseDown"
+    @touchend="onMouseUp"
+    @touchmove="onMouseMove"
   >
     <img
       :src="getImageSrc"
@@ -36,7 +41,7 @@
 import { ref, computed } from "vue";
 
 const props = defineProps(["image"]);
-const emit = defineEmits(["start", "stop"]);
+const emit = defineEmits(["start", "stop", "slide"]);
 
 const getImageSrc = computed(() => {
   return new URL(`../assets/gallery/${props.image.img}.webp`, import.meta.url)
@@ -48,6 +53,7 @@ const isOverlayVisible = ref(false);
 const toggleOverlay = () => {
   isOverlayVisible.value = true;
   emit("stop");
+  emit("slide");
   document.addEventListener("click", handleClickOutside);
 };
 
@@ -59,6 +65,31 @@ const handleClickOutside = (event) => {
     isOverlayVisible.value = false;
     emit("start");
     document.removeEventListener("click", handleClickOutside);
+  }
+};
+
+//Dragscroll
+
+const isDragging = ref(false);
+const startX = ref(0);
+
+const onMouseDown = (event) => {
+  isDragging.value = false;
+  startX.value = event.clientX;
+};
+
+const onMouseMove = (event) => {
+  const distanceX = Math.abs(event.clientX - startX.value);
+
+  // Jeżeli mysz przesunie się powyżej progu, oznacz jako przeciąganie
+  if (distanceX > 10) {
+    isDragging.value = true;
+  }
+};
+
+const onMouseUp = () => {
+  if (!isDragging.value) {
+    toggleOverlay();
   }
 };
 
