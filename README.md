@@ -4,7 +4,7 @@
 
 ## :globe_with_meridians: Opis projektu
 
-**Cars Spot** to nowoczesna, responsywna strona typu landing page, stworzona jako zadanie rekrutacyjne do firmy [adSite.pro](https://www.adsite.pro).
+**Cars Spot** to nowoczesna, responsywna strona typu landing page, stworzona jako zadanie rekrutacyjne.
 Strona została zaprojektowana, aby prezentować samochody w atrakcyjny i przejrzysty sposób, zgodnie z najlepszymi praktykami UX/UI.
 
 Link do strony - [https://cars-spot.netlify.app/](https://cars-spot.netlify.app/)
